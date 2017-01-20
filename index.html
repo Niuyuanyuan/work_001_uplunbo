@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上滑轮播</title>
+	<style>
+		div,ul,li{
+			padding:0;
+			margin:0;
+		}
+		.box{
+			width:600px;
+            height:150px;
+            overflow: hidden;
+            margin:20px auto;
+		}
+		.box-list{
+			width: 100%;
+			height:300px;
+		}
+		.box-list-item{
+			width: 100%;
+			height:30px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="box-list">
+			<li class="box-list-item">第1个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+			<li class="box-list-item">第2个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+			<li class="box-list-item">第3个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+			<li class="box-list-item">第4个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+			<li class="box-list-item">第5个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+			<li class="box-list-item">第6个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+			<li class="box-list-item">第7个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+			<li class="box-list-item">第8个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+			<li class="box-list-item">第9个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+			<li class="box-list-item">第10个的内容的是这个的内容呀！的内容的是这个的内容呀！</li>
+		</ul>
+	</div>
+</body>
+<script src='js/jquery.js'></script>
+<script>
+	var boxList = $('.box-list'),
+	    liH = $('.box-list-item').height();
+	var move = function(){
+		boxList.animate({marginTop:'-' + liH + 'px'},500,function(){
+			$('.box-list-item:first-child').remove().appendTo($('.box-list'));
+			$('.box-list').css('margin-top','0px');
+	    });
+
+	    Go = setTimeout(function(){move()},1000);
+	}
+	var Go = setTimeout(function(){move();},1000);
+
+	$('.box-list').hover(function(){
+		clearTimeout(Go);
+	},function(){
+		Go = setTimeout(function(){move()},1000);
+	});
+</script>
+</html>
